@@ -1,0 +1,42 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <a class="add-new" href="./index.php?m={$Think.MODULE_NAME}&a=manager_add">添加管理员</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>管理员</th>
+                        <th>邮箱</th>
+                        <th>所属角色</th>
+                        <th>状态</th>
+                        <th>最近登录时间</th>
+                        <th>最近登录ip</th>
+                        <th>最近登录os</th>
+                        <th>登录次数</th>
+                        <th>管理操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="manager_list" id="vo" key="k">
+                        <tr>
+                            <td>{$vo.manager_id}</td>
+                            <td>{$vo.manager_name}</td>
+                            <td>{$vo.manager_email}</td>
+                            <td>{$vo.role_name}</td>
+                            <td>{$vo.status}</td>
+                            <td>{$vo.login_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.login_ip}</td>
+                            <td>{$vo.login_os}</td>
+                            <td>{$vo.login_count}</td>
+                            <td>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=manager_edit&manager_id={$vo.manager_id}">编辑</a>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=manager_delete&manager_id={$vo.manager_id}">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>

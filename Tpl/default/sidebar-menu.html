@@ -1,0 +1,25 @@
+<div class="site-bar col-md-2">
+    <ul class="site-bar-menu nav nav-stacked">    
+        <volist name="menu_list" id="v1">
+            <li class="menu-header"><a>{$v1.menu_method}</a></li>
+            <volist name="v1['son']" id="v2">
+                <eq name="v2['son']" value="">
+                    <li id="{$v2.menu_method}"><a href="./index.php?m={$v2.menu_method}"><i class="glyphicon glyphicon-link"></i> {$v2.menu_name}</a></li>
+                <else />
+                    <li id="{$v2.menu_method}">
+                        <a class="collapsed" data-target="#{$v2.menu_method}-ul" data-toggle="collapse" data-parent="#accordion{$ka}"><i class="glyphicon glyphicon-list"></i> {$v2.menu_name}</a>
+                        <ul id="{$v2.menu_method}-ul" class="collapse nav sub-menu">
+                            <volist name="v2['son']" id="v3" key="kb">
+                                <li id="{$v3.menu_method}">
+                                    <a href="./index.php?m={$v2.menu_method}&a={$v3.menu_method}">
+                                        <i class="glyphicon glyphicon-link"></i> {$v3.menu_name}
+                                    </a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </li>
+                </eq>
+            </volist>
+        </volist>
+    </ul>
+</div>

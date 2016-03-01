@@ -1,0 +1,90 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <a class="add-new" href="./index.php?m={$Think.MODULE_NAME}&a=menu_add">添加后台栏目</a>
+        <form class="form-horizontal" method="post" action="">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>排序</th>
+                            <th>id</th>
+                            <th>栏目名称（方法）</th>
+                            <th>显示/隐藏</th>
+                            <th>管理操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <volist name="menu_list" id="vo" key="k">
+                            <tr>
+                                <td>
+                                    <input style="width:50px" type="text" placeholder="0" value="{$vo.sort}" id="sort" name="sort[{$vo.menu_id}]" class="form-control" />
+                                </td>
+                                <td>{$vo.menu_id}</td>
+                                <td><a href="javascript:void(0);" class="top_menu" id="sub{$vo.menu_id}"><i class="glyphicon glyphicon-minus"></i></a>&nbsp;{$vo.menu_name}（{$vo.menu_method}）</td>
+                                <td>
+                                    <div class="switch switch-small">
+                                        <input type="checkbox" <eq name="vo['isshow']" value="1">checked</eq> />
+                                    </div>
+                                </td>
+                                <td>
+                                    <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=menu_edit&menu_id={$vo.menu_id}">编辑</a>
+                                    <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=menu_delete&menu_id={$vo.menu_id}">删除</a>
+                                </td>
+                            </tr>
+                            <volist name="vo['son']" id="vo1">
+                                <tr class="sub{$vo.menu_id}">
+                                    <td>
+                                        <input style="width:80px" type="text" placeholder="0" value="{$vo1.sort}" id="sort" name="sort[{$vo1.menu_id}]" class="form-control" />
+                                    </td>
+                                    <td>{$vo1.menu_id}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" class="top_menu" id="sub{$vo1.menu_id}"><i class="glyphicon glyphicon-minus"></i></a>&nbsp;├{$vo1.menu_name}（{$vo1.menu_method}）</td>
+                                    <td>
+                                        <div class="switch switch-small">
+                                            <input type="checkbox" <eq name="vo1['isshow']" value="1">checked</eq> />
+                                        </div>
+                                    </td>
+                                    <td>
+                                    <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=menu_edit&menu_id={$vo1.menu_id}">编辑</a>
+                                        <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=menu_delete&menu_id={$vo1.menu_id}">删除</a>
+                                    </td>
+                                </tr>
+                                <volist name="vo1['son']" id="vo2">
+                                    <tr class="sub{$vo.menu_id} sub{$vo1.menu_id}">
+                                        <td>
+                                            <input style="width:80px" type="text" placeholder="0" value="{$vo2.sort}" id="sort" name="sort[{$vo2.menu_id}]" class="form-control" />
+                                        </td>
+                                        <td>{$vo2.menu_id}</td>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├{$vo2.menu_name}（{$vo2.menu_method}）</td>
+                                        <td>
+                                            <div class="switch switch-small">
+                                                <input type="checkbox" <eq name="vo2['isshow']" value="1">checked</eq> />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=menu_edit&menu_id={$vo2.menu_id}">编辑</a>
+                                            <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=menu_delete&menu_id={$vo2.menu_id}">删除</a>
+                                        </td>
+                                    </tr>
+                                </volist>
+                            </volist>
+                        </volist>
+                    </tbody>
+                </table>
+            </div>
+            <input type="text" style="display:none;" value="1" name="dosubmit" />
+            <div class="form-group">
+                <div class="col-md-3">
+                    <button class="btn btn-default" type="submit">排序</button>
+                </div>
+            </div>
+        </form>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('.top_menu').click(function() {
+                $(this).find('i').toggleClass('glyphicon-minus').toggleClass('glyphicon-plus');
+                $('.' + $(this).attr('id')).toggle('slow');
+            });
+        });
+        </script>
+    </div>
+</block>

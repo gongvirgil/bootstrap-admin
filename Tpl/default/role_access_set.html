@@ -1,0 +1,82 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <h2 class="sub-header">Section title</h2>
+        <form class="form-horizontal" method="post" action="">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>勾选</th>
+                            <th>栏目名称（方法）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <volist name="menu_list" id="vo" key="k">
+                            <tr class="menu_list" id="sub{$vo.menu_id}">
+                                <td>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="menuid[]" value="{$vo.menu_id}" type="checkbox" <if condition="$vo.flag eq 1">checked</if>></label>
+                                    </div>
+                                </td>
+                                <td><a href="javascript:void(0);" class="top_menu" id="sub{$vo.menu_id}">[-]</a>&nbsp;{$vo.menu_name}（{$vo.menu_method}）</td>
+                            </tr>
+                            <volist name="vo['son']" id="vo1">
+                                <tr class="son_menu_list" tar="sub{$vo.menu_id}">
+                                    <td>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input name="menuid[]" value="{$vo1.menu_id}" type="checkbox" <if condition="$vo1.flag eq 1">checked</if>></label>
+                                        </div>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;├{$vo1.menu_name}（{$vo1.menu_method}）</td>
+                                </tr>
+                                <volist name="vo1['son']" id="vo2">
+                                    <tr class="son_menu_list" tar="sub{$vo2.menu_id}">
+                                        <td>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input name="menuid[]" value="{$vo2.menu_id}" type="checkbox" <if condition="$vo2.flag eq 1">checked</if>></label>
+                                            </div>
+                                        </td>
+                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├{$vo2.menu_name}（{$vo2.menu_method}）</td>
+                                    </tr>
+                                </volist>
+                            </volist>
+                        </volist>
+                    </tbody>
+                </table>
+            </div>
+            <input type="text" style="display:none;" value="{$role_id}" name="role_id" />
+            <input type="text" style="display:none;" value="1" name="dosubmit" />
+            <div class="form-group">
+                <div class="col-md-3">
+                    <button class="btn btn-default" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('.top_menu').click(function() {
+                if ($(this).html() == "[+]") {
+                    $(this).html("[-]");
+                    $('.' + $(this).attr('id')).show('slow');
+                } else if ($(this).html() == "[-]") {
+                    $(this).html("[+]");
+                    $('.' + $(this).attr('id')).hide('slow');
+                }
+            });
+            $('.top_menu_list .checkbox input').click(function() {
+                $("tr[tar=" + $(this).parents('.top_menu_list').attr("id") + "] .checkbox input[type=checkbox]").prop("checked", $(this).is(':checked'));
+            });
+            $('.son_menu_list .checkbox input').click(function() {
+                var i = 0;
+                $("tr[tar=" + $(this).parents('.son_menu_list').attr("tar") + "]").each(function(index, el) {
+                    if ($(this).find('.checkbox input[type=checkbox]').is(':checked')) i++;
+                });
+                $("#" + $(this).parents('.son_menu_list').attr("tar") + " .checkbox input").prop("checked", i > 0);
+            });
+        });
+        </script>
+    </div>
+</block>

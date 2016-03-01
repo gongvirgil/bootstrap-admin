@@ -1,0 +1,44 @@
+/*切换按钮*/
+.g-btn-group {
+    position: relative;
+    display: inline-block;
+}
+.g-btn-group>.g-btn {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e7eaec;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-left: -1px;
+    padding: 10px 8px;
+    width: 100px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.g-btn-group>.g-btn:active,
+.g-btn-group>.g-btn:hover {
+    z-index: 2;
+    background-color: #e7eaec;
+}
+
+.g-btn-group>.g-btn.active {
+    z-index: 2;
+    color: #fff;
+    border-color: #428bca;
+    background-color: #428bca;
+    box-shadow: none;
+}
+
+.g-btn-group>.g-btn.g-btn-left {
+    margin-left: 0;
+}
+
+
+/*切换按钮*/

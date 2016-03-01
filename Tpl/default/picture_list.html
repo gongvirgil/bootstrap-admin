@@ -1,0 +1,57 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <div class="page-control">
+            <div class="g-btn-group">
+                <a class="g-btn g-btn-left active">图片管理</a>
+                <a class="g-btn">相册管理</a>
+                <a class="g-btn g-btn-right" href="./index.php?m={$Think.MODULE_NAME}&a=picture_add&site_id={$site_id}">上传图片</a>
+            </div>
+        </div>
+        <div id="page1">
+            <div class="picture-box">
+                <ul>
+                    <li>
+                        <a title="{$vo.title}">
+                            <hr align="left" width="100" color="#990099" SIZE="3" noShade>
+                            <hr align="center" width="1" color="#990099" SIZE="3" noShade>
+                        </a>
+                    </li>
+                    <volist name="picture_list" id="vo">
+                        <li>
+                            <a title="{$vo.title}" href="{$vo.article_img}"><img height="100" width="100" alt="{$vo.title}" src="{$vo.article_img}"></a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="page">{$page}</div>
+        </div>
+        <div id="page2" style="display:none;">
+            <a href="./index.php?m={$Think.MODULE_NAME}&a=album_add&site_id={$site_id}">添加新相册</a>
+            <div class="box-content">
+                <ul>
+                    <volist name="album_list" id="vo">
+                        <li>
+                            <a title="" href=""><img alt="" src=""></a>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+            <div class="page">{$page}</div>
+        </div>
+    </div>
+    <style>
+    .picture-box {
+        width: 100%;
+        height: 700px;
+    }
+    
+    .picture-box li {
+        float: left;
+        padding: 4px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin: 0 0 20px 15px;
+    }
+    </style>
+</block>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G-Q | 后台管理系统</title>
+    <link href="{$Think.config.DOC_PATH}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{$Think.config.DOC_PATH}/bootstrap/js/html5shiv.min.js"></script>
+    <script src="{$Think.config.DOC_PATH}/bootstrap/js/respond.min.js"></script>
+    <![endif]-->
+    <link href="{$Think.config.ADMIN_PATH}/Tpl/default/css/base.css" rel="stylesheet">
+    <link href="{$Think.config.ADMIN_PATH}/Tpl/default/css/unit.css" rel="stylesheet">
+    <link href="{$Think.config.DOC_PATH}/bootstrap/css/bootstrap-select.css" rel="stylesheet">
+    <link href="{$Think.config.DOC_PATH}/bootstrap/css/bootstrap-switch.min.css" rel="stylesheet">
+    <script src="{$Think.config.DOC_PATH}/jquery/jquery-1.11.3.min.js"></script>
+    <script src="{$Think.config.DOC_PATH}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{$Think.config.DOC_PATH}/bootstrap/js/bootstrap-switch.min.js"></script>
+    <script src="{$Think.config.DOC_PATH}/jQuery-Plugin/jquery.cookie.js"></script>
+    <script src="{$Think.config.ADMIN_PATH}/Tpl/default/js/index.js"></script>
+</head>
+
+<body>
+    {:W('SidebarMenu')}
+    <div class="page-content col-md-10">
+        {:W('TopbarInfo')}
+        <div class="breadcrumbs">
+            <div class="breadcrumb">
+                <i class="glyphicon glyphicon-home"></i>
+                <volist name="menu_chain" id="vo">
+                    <li><a href="{$vo.menu_link}">{$vo.menu_name}</a></li>
+                </volist>
+            </div>
+        </div>
+        <block name="page-content">page</block>
+        {:W('FooterbarInfo')}
+    </div>
+</body>
+
+</html>

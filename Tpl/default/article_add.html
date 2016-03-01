@@ -1,0 +1,120 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <form enctype="multipart/form-data" style="padding-top:20px" class="form-horizontal" method="post" action="">
+            <div class="form-group">
+                <label for="server" class="col-md-2 control-label">站点</label>
+                <div class="col-md-3">
+                    <input type="text" readonly value="{$site_info.site_name}" id="site_name" name="site_name" class="form-control" /> </div>
+                <label for="server" class="col-md-2 control-label">所属栏目</label>
+                <div class="col-md-3">
+                    <select id="father_id" name="father_id" class="form-control">
+                        <volist name="column_list" id="vo">
+                            <option value="{$vo.column_id}">{$vo.column_name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="title">文章标题</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入文章标题" value="" id="title" name="title" class="form-control" />
+                </div>
+                <label class="col-md-2 control-label" for="short_title">简略标题</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入简略标题" value="" id="short_title" name="short_title" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="author">作者</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入作者" value="" id="author" name="author" class="form-control" />
+                </div>
+                <label class="col-md-2 control-label" for="from">来源</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入来源" value="" id="from" name="from" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="keywords">关键字</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入关键字" value="" id="keywords" name="keywords" class="form-control" />
+                </div>
+                <label class="col-md-2 control-label" for="description">摘要（描述）</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入摘要（描述）" value="" id="description" name="description" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="weight">权重</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入关键字" value="" id="weight" name="weight" class="form-control" />
+                </div>
+                <label class="col-md-2 control-label" for="hits">浏览数</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入浏览数" value="" id="hits" name="hits" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="attributes">自定义属性</label>
+                <div class="col-md-3">
+                    推荐
+                    <input type="checkbox" value="1" id="IsHot" class="noborder" name="isrec" class="form-control" /> 幻灯
+                    <input type="checkbox" value="1" id="IsHot" class="noborder" name="isflash" class="form-control" /> 置顶
+                    <input type="checkbox" value="1" id="IsHot" class="noborder" name="istop" class="form-control" /> 加粗
+                    <input type="checkbox" value="1" id="IsHot" class="noborder" name="isbold" class="form-control" />
+                </div>
+                <label class="col-md-2 control-label" for="tags">标签</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入标签" value="" id="tags" name="tags" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="pic">图片</label>
+                <div class="col-md-2">
+                    <input type="file" placeholder="请上传图片" value="" id="pic" name="pic" class="form-control" />
+                </div>
+                <div class="col-md-1">
+                    <img width="70px;" height="60px;" src="{$Think.config.ADMIN_PATH}/Public/images/moren.jpg">
+                </div>
+                <label class="col-md-2 control-label" for="comment_open">评论</label>
+                <div class="col-md-3">
+                    <input type="radio" value="1" name="comment_open" />开启
+                    <input type="radio" checked value="0" name="comment_open" />关闭
+                </div>
+            </div>
+            <script type="text/javascript" src="{$Think.config.ADMIN_PATH}/laydate/laydate.js"></script>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="create_time">创建日期</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入创建日期" value="" id="create_time" name="create_time" class="form-control" onclick="laydate()" />
+                </div>
+                <label class="col-md-2 control-label" for="update_time">发表日期</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入发表日期" value="" id="update_time" name="update_time" class="form-control" onclick="laydate()" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="content" type="text/plain">请输入文章内容</script>
+                    <script>
+                    window.UEDITOR_HOME_URL = "{$Think.config.ADMIN_PATH}/ueditor1_4_3-utf8-php/";
+                    </script>
+                    <script type="text/javascript" src="{$Think.config.ADMIN_PATH}/ueditor1_4_3-utf8-php/ueditor.config.js"></script>
+                    <script type="text/javascript" src="{$Think.config.ADMIN_PATH}/ueditor1_4_3-utf8-php/ueditor.all.min.js"></script>
+                    <script type="text/javascript" charset="utf-8" src="{$Think.config.ADMIN_PATH}/ueditor1_4_3-utf8-php/lang/zh-cn/zh-cn.js"></script>
+                    <script type="text/javascript">
+                    var ue = UE.getEditor('container');
+                    </script>
+                </div>
+            </div>
+            <input type="text" style="display:none;" value="{$site_info.site_id}" name="site_id" />
+            <input type="text" style="display:none;" value="1" name="dosubmit" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3">
+                    <button class="btn btn-default" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</block>

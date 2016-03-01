@@ -1,0 +1,33 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <a class="add-new" href="./index.php?m={$Think.MODULE_NAME}&a=role_add">添加角色</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>角色</th>
+                        <th>描述</th>
+                        <th>状态</th>
+                        <th>管理操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="role_list" id="vo" key="k">
+                        <tr>
+                            <td>{$vo.role_id}</td>
+                            <td>{$vo.role_name}</td>
+                            <td>{$vo.description}</td>
+                            <td>{$vo.enable}</td>
+                            <td>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=role_access_set&role_id={$vo.role_id}">权限设置</a>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=role_edit&role_id={$vo.role_id}">编辑</a>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=role_delete&role_id={$vo.role_id}">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>

@@ -1,0 +1,56 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <h2 class="sub-header">Section title</h2>
+        <form style="padding-top:20px" class="form-horizontal" method="post" action="">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="manager_name">账号</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入管理员账号" value="" id="manager_name" name="manager_name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="manager_email">邮箱</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入管理员邮箱" value="" id="manager_email" name="manager_email" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="manager_pwd">密码</label>
+                <div class="col-md-3">
+                    <input type="password" placeholder="请输入管理员密码" value="" id="manager_pwd" name="manager_pwd" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="server" class="col-md-2 control-label">所属角色</label>
+                <div class="col-md-3">
+                    <select id="role_id" name="role_id" class="form-control">
+                        <volist name="role_list" id="vo">
+                            <option value="{$vo.role_id}">{$vo.role_name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="status">状态</label>
+                <div class="col-md-10">
+                    <label class="checkbox-inline">
+                        <input type="radio" value="1" name="status" />开启</label>
+                    <label class="checkbox-inline">
+                        <input type="radio" value="0" checked name="status" />关闭</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="access">管理权限</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入管理权限" value="" id="access" name="access" class="form-control" />
+                </div>
+            </div>
+            <input type="text" style="display:none;" value="1" name="dosubmit" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3">
+                    <button class="btn btn-default" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</block>

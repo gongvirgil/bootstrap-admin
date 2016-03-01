@@ -1,0 +1,40 @@
+<div class="btn-group theme-container animated tada">
+    <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+        <i class="glyphicon glyphicon-tint"></i>
+        <span class="hidden-sm hidden-xs">选择</span>
+        <span class="caret"></span>
+    </button>
+    <ul id="themes" class="dropdown-menu">
+        <li><a href="#" data-value="1111">1111<i class="glyphicon glyphicon-ok"></i></a></li>
+        <li><a href="#" data-value="2222">2222<i class="whitespace"></i></a></li>
+        <li><a href="#" data-value="3333">3333<i class="whitespace"></i></a></li>
+        <li><a href="#" data-value="4444">4444<i class="whitespace"></i></a></li>
+    </ul>
+</div>
+<div class="control-group">
+    <label class="control-label" for="selectError">Modern Select</label>
+    <div class="controls">
+        <select id="selectError" data-rel="chosen">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+            <option>Option 5</option>
+        </select>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#themes a').click(function(e) {
+        currentTheme = $(this).attr('data-value');
+        switchTheme(currentTheme);
+        e.preventDefault();
+    });
+
+    function switchTheme(themeName) {
+        $('#themes i').removeClass('glyphicon glyphicon-ok whitespace').addClass('whitespace');
+        $('#themes a[data-value=' + themeName + ']').find('i').removeClass('whitespace').addClass('glyphicon glyphicon-ok');
+        $('')
+    }
+})
+</script>

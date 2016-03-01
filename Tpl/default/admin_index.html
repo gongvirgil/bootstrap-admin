@@ -1,0 +1,41 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    管理员信息
+                </div>
+                <div class="panel-body">
+                    <p>管理员：{$manager_info.manager_name}</p>
+                    <p>所属角色：{$manager_info.role_name}</p>
+                    <p>最近登录时间：{$manager_info.login_time|date="Y-m-d H:i:s",###}</p>
+                    <p>最近登录IP：{$manager_info.login_ip}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    系统信息
+                </div>
+                <div class="panel-body">
+                    <p>操作系统：{$system_info.os}</p>
+                    <p>内核版本：{$system_info.kernel_version}</p>
+                    <p>服务器软件：{$system_info.server_software}</p>
+                    <p>MySQL版本：{$system_info.mysql_info}</p>
+                    <p>文件上传大小：{$system_info.upload_max_filesize}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    维护信息
+                </div>
+                <div class="panel-body">
+                    <p>联系邮箱：ppmoli@126.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>

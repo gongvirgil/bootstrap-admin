@@ -1,0 +1,35 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <h2 class="sub-header">Section title</h2>
+        <form style="padding-top:20px" class="form-horizontal" method="post" action="">
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="role_name">角色名</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入角色名" value="{$info.role_name}" id="role_name" name="role_name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="description">描述</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入描述" value="{$info.description}" id="description" name="description" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="enable">是否启用</label>
+                <div class="col-md-10">
+                    <label class="checkbox-inline">
+                        <input type="radio" value="1" <if condition="$info.enable eq 1">checked</if> name="enable" />启用</label>
+                    <label class="checkbox-inline">
+                        <input type="radio" value="0" <if condition="$info.enable eq 0">checked</if> name="enable" />禁止</label>
+                </div>
+            </div>
+            <input type="text" style="display:none;" value="{$info.role_id}" name="role_id" />
+            <input type="text" style="display:none;" value="1" name="dosubmit" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3">
+                    <button class="btn btn-default" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</block>

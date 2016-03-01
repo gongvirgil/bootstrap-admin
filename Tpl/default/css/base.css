@@ -1,0 +1,248 @@
+/*
+ * Base structure
+ */
+
+
+/*清除a链接过后的虚线*/
+
+a:active,
+a:focus {
+    -moz-outline: none;
+    outline: none;
+    ie-dummy: expression(this.hideFocus=true);
+}
+
+a {
+    color: #585858;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+}
+
+a:hover {
+    color: #266cad;
+}
+
+li {
+    list-style: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+
+/*通用按钮样式*/
+
+a.list-btn {
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.3em;
+    height: 1.9em;
+    line-height: 1.9em;
+    margin-right: -1px;
+    overflow: hidden;
+    padding: 0 2em;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+a.list-btn.start-list-btn {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+a.list-btn.end-list-btn {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+a.list-btn:hover {
+    background-image: none;
+    background-color: #e6e6e6;
+}
+
+a.list-btn.on {
+    background-color: #ccc;
+    background-image: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+/*通用按钮样式 END*/
+
+
+/*覆盖bootstrap样式*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    vertical-align: middle;
+}
+
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td {
+    border-bottom-width: 1px;
+}
+
+
+/*覆盖bootstrap样式 END*/
+
+
+/*页面样式*/
+
+.navbar {
+    margin: 0;
+    color: #fff;
+    background-color: #fff;
+    border: none;
+    height: 50px;
+}
+
+.btn-group {
+    margin: 7px 5px 0;
+}
+
+html,body,.site-bar,.page-content{
+    height: 100%;
+}
+.site-bar {
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: #35363a;
+    overflow: scroll;
+}
+
+.site-bar .menu-header {
+    border: medium none;
+    box-shadow: none;
+    color: #999;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 18px;
+    margin: 0;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+}
+
+.nav > li.menu-header > a {
+    text-align: center;
+    background-color: #27272B;
+    padding: 10px 0;
+}
+
+.nav > li.menu-header > a:hover {
+    background-color: #27272B;
+}
+
+.nav > li > a {
+    color: #a7b1c2;
+    font-weight: 600;
+    padding: 14px 20px 14px 25px;
+    display: block;
+}
+
+.nav > li > a:focus,
+.nav > li > a:hover,
+.nav > li.active > a,
+.sub-menu > li > a:focus,
+.sub-menu > li > a:hover,
+.sub-menu > li.active > a {
+    background-color: #2B2B30;
+    color: #fff;
+}
+
+.sub-menu > li > a {
+    margin-top: -1px;
+    padding: 5px 20px 5px 40px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.page-content {
+    padding: 0;
+}
+
+.page-control {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 9px;
+}
+
+.breadcrumb {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    height: 40px;
+    margin-bottom: 0;
+    padding: 10px 15px;}
+
+.page-title {
+    margin-bottom: 15px;
+}
+
+a.add-new {
+    width: 100px;
+    padding: 10px 8px;
+    margin-bottom: 15px;
+    background-color: #428bca;
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+a.add-new:hover {
+    background-color: #42a2ca;
+}
+.page-content-wrap {
+    height: calc(100% - 126px);
+    padding: 15px;
+    overflow: scroll;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    background: #fff none repeat scroll 0 0;
+    border-top: 1px solid #e7eaec;
+    height: 36px;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+
+
+/*页面样式*/

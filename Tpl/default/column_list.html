@@ -1,0 +1,48 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <a class="add-new" href="./index.php?m=Article&a=column_add&site_id={$site_id}">添加栏目</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>栏目ID</th>
+                        <th>栏目名称</th>
+                        <th>描述</th>
+                        <th>排序</th>
+                        <th>显示</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="column_list" id="vo">
+                        <tr>
+                            <td>{$vo.column_id}</td>
+                            <td><a href="javascript:void(0);" class="top_menu" id="sub{$vo.menu_id}">[-]</a>&nbsp;{$vo.column_name}</td>
+                            <td>{$vo.description}</td>
+                            <td>{$vo.sort}</td>
+                            <td>{$vo.isshow}</td>
+                            <td>
+                                <a class="btn btn-default" href="./index.php?m=Article&a=column_edit&column_id={$vo.column_id}&site_id={$site_id}">编辑</a>
+                                <a class="btn btn-default" href="./index.php?m=Article&a=column_delete&column_id={$vo.column_id}&site_id={$site_id}">删除</a>
+                            </td>
+                        </tr>
+                        <volist name="vo['son']" id="vs">
+                            <tr class="sub{$vo.menu_id}">
+                                <td>
+                                    <input style="width:80px" type="text" placeholder="0" value="{$vs.sort}" id="sort" name="sort[{$vs.menu_id}]" class="form-control" />
+                                </td>
+                                <td>{$vs.column_id}</td>
+                                <td>&nbsp;&nbsp;├{$vs.column_name}</td>
+                                <td>{$vs.isshow}</td>
+                                <td>
+                                    <a class="btn btn-default" href="./index.php?m=Article&a=column_edit&column_id={$vs.column_id}&site_id={$site_id}">编辑</a>
+                                    <a class="btn btn-default" href="./index.php?m=Article&a=column_delete&column_id={$vs.column_id}&site_id={$site_id}">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>

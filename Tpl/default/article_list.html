@@ -1,0 +1,38 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <a class="add-new" href="./index.php?m={$Think.MODULE_NAME}&a=article_add&site_id={$site_id}">添加文章</a>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>文章名称</th>
+                        <th>发布时间</th>
+                        <th>浏览</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="article_list" id="vo">
+                        <tr>
+                            <td>{$vo.aid}</td>
+                            <td>{$vo.title}</td>
+                            <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.hits}</td>
+                            <td>
+                                <a class="btn btn-default"  target="_blank" href="/{$vo.aid}">预览</a>
+                                <a class="btn btn-default"  href="./index.php?m={$Think.MODULE_NAME}&a=article_toggle_check&aid={$vo.aid}&ischeck={$vo.ischeck}">
+                                    <if condition="$vo.ischeck eq 0">未审核
+                                    <else />已审</if>
+                                </a>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=article_edit&aid={$vo.aid}">编辑</a>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=article_delete&aid={$vo.aid}">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+            <div class="page">{$page}</div>
+        </div>
+    </div>
+</block>

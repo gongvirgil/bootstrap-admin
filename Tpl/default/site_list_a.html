@@ -1,0 +1,33 @@
+<div class="page-title col-md-12">
+    <h2>{$menu.menu_name}</h2>
+</div>
+<div class="page-content-wrap col-md-12">
+    <h2 class="sub-header">Section title</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>站点ID</th>
+                    <th>站点名称</th>
+                    <th>站点域名</th>
+                    <th>状态</th>
+                    <th>管理操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="site_list" id="vo">
+                    <tr>
+                        <td>{$vo.site_id}</td>
+                        <td>{$vo.site_name}</td>
+                        <td>{$vo.domain}</td>
+                        <td>{$vo.isshow}</td>
+                        <td>
+                            <a href="./index.php?m={$Think.MODULE_NAME}&a=column_list&site_id={$vo.site_id}">栏目管理</a>
+                            <a href="./index.php?m={$Think.MODULE_NAME}&&a=article_list&site_id={$vo.site_id}">文章管理</a>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+</div>

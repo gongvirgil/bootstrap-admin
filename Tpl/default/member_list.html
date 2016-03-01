@@ -1,0 +1,39 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>UID</th>
+                        <th>用户名</th>
+                        <th>邮箱</th>
+                        <th>电话</th>
+                        <th>等级</th>
+                        <th>余额</th>
+                        <th>注册时间</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="member_list" id="vo">
+                        <tr>
+                            <td>{$vo.uid}</td>
+                            <td>{$vo.username}</td>
+                            <td>{$vo.email}</td>
+                            <td>{$vo.phone}</td>
+                            <td>{$vo.level}</td>
+                            <td>{$vo.money}</td>
+                            <td>{$vo.reg_time|date="Y-m-d H:i:s",###}</td>
+                            <td>{$vo.status}</td>
+                            <td>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=member_edit&uid={$vo.uid}">编辑</a>
+                                <a class="btn btn-default" href="./index.php?m={$Think.MODULE_NAME}&a=member_delete&uid={$vo.uid}">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</block>

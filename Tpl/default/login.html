@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>系统后台管理登录页面</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    .main {
+        padding: 30px 0;
+    }
+    
+    .login-box {
+        margin-top: 100px;
+    }
+    
+    .verify-code {
+        width: 50%;
+        float: left;
+    }
+    
+    .verify-code-img {
+        margin-left: 5px;
+    }
+    
+    .form-base {
+        border: 1px solid #E5E6E7;
+        border-radius: 3px;
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .form-head {
+        min-height: 48px;
+        padding: 1px 15px;
+        border-bottom: 1px solid #e7eaec;
+    }
+    
+    .form-content {
+        width: 80%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row main">
+            <div class="col-md-8 col-md-push-2">
+                <div style="height: 36px;line-height: 36px;"> <strong style="font-size: 16px;font-weight: normal;">BACKSTAGE</strong>
+                </div>
+                <div class="login-box">
+                    <form class="form-horizontal form-base" action="{$action}" method="post">
+                        <div class="form-head">
+                            <h5>后台登录(⊙o⊙)</h5>
+                        </div>
+                        <div class="form-content">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">用户名：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="inputUserName" class="form-control" placeholder="用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">密码：</label>
+                                <div class="col-sm-8">
+                                    <input type="password" name="inputPassword" class="form-control" placeholder="密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">验证码：</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control verify-code" placeholder="验证码">
+                                    <span class="verify-code-img"><img src='./index.php?s=/public/verify.html' /></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-8">
+                                    <button type="submit" class="btn btn-sm btn-white">登 录</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

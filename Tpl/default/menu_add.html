@@ -1,0 +1,53 @@
+<extend name="./Tpl/default/base.html" />
+<block name="page-content">    <div class="page-content-wrap col-md-12">
+        <form style="padding-top:20px" class="form-horizontal" method="post" action="">
+            <div class="form-group">
+                <label for="server" class="col-md-2 control-label">上级栏目</label>
+                <div class="col-md-3">
+                    <select id="father_id" name="father_id" class="form-control">
+                        <option value="0">顶级栏目</option>
+                        <volist name="top_menu_list" id="vo">
+                            <option value="{$vo.menu_id}">{$vo.menu_name}</option>
+                            <volist name="vo['son']" id="vo1">
+                                <option value="{$vo1.menu_id}" <eq name="info.father_id" value="$vo1.menu_id">selected</eq>>├{$vo1.menu_name}</option>
+                            </volist>
+                        </volist>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="menu_name">栏目名</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入栏目名" value="" id="menu_name" name="menu_name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="menu_method">方法名</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入方法名" value="" id="menu_method" name="menu_method" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="sort">排序</label>
+                <div class="col-md-3">
+                    <input type="text" placeholder="请输入排序" value="" id="sort" name="sort" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="isshow">是否显示</label>
+                <div class="col-md-10">
+                    <label class="checkbox-inline">
+                        <input type="radio" value="1" name="isshow" /> 显示 </label>
+                    <label class="checkbox-inline">
+                        <input type="radio" value="0" checked name="isshow" /> 隐藏 </label>
+                </div>
+            </div>
+            <input type="text" style="display:none;" value="1" name="dosubmit" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-3">
+                    <button class="btn btn-default" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</block>
