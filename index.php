@@ -1,4 +1,4 @@
 <?php
-	define ( 'APP_NAME', 'admin' );
+	define ( 'APP_NAME', 'bootstrap-admin' );
 	define ( 'APP_DEBUG', true );
 	require 'ThinkPHP/ThinkPHP.php';

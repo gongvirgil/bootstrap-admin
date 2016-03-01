@@ -2,7 +2,7 @@
 
 $global = require_once 'config.inc.php';
 $man = array (
-	'ADMIN_PATH'           => '/admin',
+	'ADMIN_PATH'           => '/bootstrap-admin',
 	'DOC_PATH'           => 'http://gongvirgil.github.io/Resource',
 	'URL_MODEL'            => '0',
 	'USER_AUTH_ON'         => true,
